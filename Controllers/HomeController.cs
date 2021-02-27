@@ -120,6 +120,26 @@ namespace SportsORM.Controllers
         [HttpGet("level_3")]
         public IActionResult Level3()
         {
+            ViewBag.samEvans = _context.Teams
+                .Include(t => t.AllPlayers)
+                .Include(u => u.CurrentPlayers)
+                .Where(play => play.CurrentPlayers.Any(z => z.FirstName.Contains("Samuel") && z.LastName.Contains("Evans") || play.AllPlayers.Any(player => player.PlayerOnTeam.FirstName.Contains("Samuel") && player.PlayerOnTeam.LastName.Contains("Evans"))));
+            ViewBag.tigerPlayers = _context.Players
+                .Include(t => t.AllTeams)
+                .ThenInclude(u => u.TeamOfPlayer)
+                .Include(c => c.CurrentTeam)
+                .Where(team => team.CurrentTeam.TeamName == "Tiger-Cats" || team.AllTeams.Any(r => r.TeamOfPlayer.TeamName.Contains("Tiger-Cats")));
+            ViewBag.xVikings = _context.Players
+                .Include(t => t.AllTeams)
+                .Where(team => team.AllTeams.Any(player => player.TeamOfPlayer.TeamName == "Vikings"))
+                .OrderBy(name => name.LastName);
+            ViewBag.xTeamJacob = _context.Teams
+                .Include(t => t.AllPlayers)
+                .Where(player => player.AllPlayers.Any(player => player.PlayerOnTeam.FirstName.Contains("Jacob") && player.PlayerOnTeam.LastName.Contains("Gray")));
+            ViewBag.teamJoshua = _context.Players
+                .Include(player => player.CurrentTeam)
+                .ThenInclude(team => team.CurrLeague)
+                .Where(p => p.FirstName.Contains("Joshua"));
             return View();
         }
 

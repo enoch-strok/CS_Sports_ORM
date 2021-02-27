@@ -12,4 +12,79 @@
             <li>...all players, sorted by the number of teams they've played for</li>
         </ol>
     </div>
+    <h3>1. All teams, past and present, that Samuel Evans has played with</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Team Name</th>
+                <th>Team Location</th>
+            </tr>
+            @foreach (var l in ViewBag.samEvans)
+            {
+                    <tr>
+                        <td>@l.TeamName</td>
+                        <td>@l.Location</td>
+                    </tr>
+
+            }
+        </table>
+        <h3>2. All players, past and present, with the Manitoba Tiger-Cats</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Player First Name</th>
+                <th>Player Last Name</th>
+            </tr>
+            @foreach (var l in ViewBag.tigerPlayers)
+            {
+                    <tr>
+                        <td>@l.FirstName</td>
+                        <td>@l.LastName</td>
+                    </tr>
+
+            }
+        </table>
+        <h3>3. All players who were formerly (but aren't currently) with the Wichita Vikings</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Player First Name</th>
+                <th>Player Last Name</th>
+            </tr>
+            @foreach (var l in ViewBag.xVikings)
+            {
+                    <tr>
+                        <td>@l.FirstName</td>
+                        <td>@l.LastName</td>
+                    </tr>
+
+            }
+        </table>
+        <h3>4. Every team that Jacob Gray played for before he joined the Oregon Colts</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Team Name</th>
+                <th>Team Location</th>
+            </tr>
+            @foreach (var l in ViewBag.xTeamJacob)
+            {
+                    <tr>
+                        <td>@l.TeamName</td>
+                        <td>@l.Location</td>
+                    </tr>
+
+            }
+        </table>
+        <h3>5. Everyone named "Joshua" who has ever played in the Atlantic Federation of Amateur Baseball Players</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Player First Name</th>
+                <th>Player Last Name</th>
+            </tr>
+            @foreach (var l in ViewBag.teamJoshua)
+            {
+                    <tr>
+                        <td>@l.FirstName</td>
+                        <td>@l.LastName</td>
+                    </tr>
+
+            }
+        </table>
 </div>
